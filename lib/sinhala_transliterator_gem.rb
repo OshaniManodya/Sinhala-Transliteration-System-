@@ -6,6 +6,8 @@ require_relative "sinhala_transliterator_gem/spell_dictionary"
 require_relative "sinhala_transliterator_gem/spell_checker"
 require_relative "sinhala_transliterator_gem/levenshtein"
 require_relative "sinhala_transliterator_gem/damerau_levenshtein"
+require_relative "sinhala_transliterator_gem/predictor"
+require_relative "sinhala_transliterator_gem/bigram"
 
 
 module SinhalaTransliterator
