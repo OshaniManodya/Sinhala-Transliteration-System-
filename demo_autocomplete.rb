@@ -1,0 +1,19 @@
+require_relative "lib/sinhala_transliterator_gem"
+
+SinhalaTransliterator::Bigram.train(
+  "data/sentence_corpus.txt"
+)
+
+puts "Suggestions"
+
+puts
+
+p SinhalaTransliterator::Autocomplete.suggest("මම")
+
+puts
+
+p SinhalaTransliterator::Autocomplete.suggest("අපි")
+
+puts
+
+p SinhalaTransliterator::Autocomplete.suggest("මගේ")
