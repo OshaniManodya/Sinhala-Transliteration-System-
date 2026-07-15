@@ -9,6 +9,10 @@ require_relative "sinhala_transliterator_gem/damerau_levenshtein"
 require_relative "sinhala_transliterator_gem/predictor"
 require_relative "sinhala_transliterator_gem/bigram"
 require_relative "sinhala_transliterator_gem/autocomplete"
+require_relative "sinhala_transliterator_gem/candidate_generator"
+require_relative "sinhala_transliterator_gem/beam_decoder"
+require_relative "sinhala_transliterator_gem/sentence_decoder"
+require_relative "sinhala_transliterator_gem/context_transliterator"
 
 
 module SinhalaTransliterator
