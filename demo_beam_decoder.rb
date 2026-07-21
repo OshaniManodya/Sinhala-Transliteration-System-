@@ -8,11 +8,15 @@ decoder = SinhalaTransliterator::BeamDecoder.new
 
 candidate_lists = [
   ["මම"],
-  ["ගෙඩ්‍ර", "ගෙදර"],
+  ["ගෙද්‍ර", "ගෙදර"],
   ["යනව", "යනවා"]
 ]
 
-result = decoder.decode(candidate_lists)
+beam = decoder.decode(candidate_lists)
 
-puts "Selected Sentence:"
-puts result.join(" ")
+puts "Best Sentence:"
+puts beam.sentence.join(" ")
+
+puts
+puts "Score:"
+puts beam.score

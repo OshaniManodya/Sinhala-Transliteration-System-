@@ -24,7 +24,7 @@ module SinhalaTransliterator
 
     # Base consonants
     CONSONANTS = {
-      "zdha" => "ඳ",
+      "zdh" => "ඳ",
       "thh"  => "ථ",
       "dhh"  => "ධ",
       "chh"  => "ඡ",
@@ -50,6 +50,7 @@ module SinhalaTransliterator
       "D"    => "ඪ",
       "N"    => "ණ",
       "B"    => "ඹ",
+      "L"     => "ළ",
 
       "k"    => "ක",
       "g"    => "ග",
@@ -64,6 +65,7 @@ module SinhalaTransliterator
       "r"    => "ර",
       "l"    => "ල",
       "w"    => "ව",
+      "v"    => "ව",
       "s"    => "ස",
       "h"    => "හ",
       "f"    => "ෆ"
@@ -104,7 +106,7 @@ module SinhalaTransliterator
     # Conjuncts
     CONJUNCTS = {
       "ya" => "්‍ය",
-      "Ya" => "්ය",
+      "yaa"=> "්‍යා",
       "ra" => "්‍ර",
       "Ra" => "්ර"
     }

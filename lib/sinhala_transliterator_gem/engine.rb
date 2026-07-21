@@ -11,7 +11,7 @@ module SinhalaTransliterator
 
     def self.convert_word(word, mode: :hybrid)
 
-      puts "Mode = #{mode}"
+      #puts "Mode = #{mode}"
 
       if mode == :dictionary
         return Dictionary::WORDS[word.downcase] || "[UNKNOWN]"
@@ -105,19 +105,7 @@ module SinhalaTransliterator
           # -----------------------------
           # Conjuncts
           # -----------------------------
-          Rules::CONJUNCTS.keys
-            .sort_by { |k| -k.length }
-            .each do |conj|
-
-            if word[i..].start_with?(conj)
-
-              result << Rules::CONJUNCTS[conj]
-
-              i += conj.length
-
-              break
-            end
-          end
+          
 
           # -----------------------------
           # Special Signs

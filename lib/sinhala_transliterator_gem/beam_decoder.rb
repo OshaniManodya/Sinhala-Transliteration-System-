@@ -4,75 +4,59 @@ module SinhalaTransliterator
 
     Beam = Struct.new(:sentence, :score)
 
-    def initialize(beam_width = 3)
+    def initialize(beam_width = 10)
       @beam_width = beam_width
     end
 
-  def decode(candidate_lists)
+    def decode(candidate_lists)
 
-  beams = [Beam.new([], 0)]
+      beams = [Beam.new([], 0)]
 
-  candidate_lists.each do |candidates|
+      candidate_lists.each do |candidates|
 
-    new_beams = []
+        new_beams = []
 
-    beams.each do |beam|
+        beams.each do |beam|
 
-      candidates.each do |candidate|
+          candidates.each do |candidate|
 
-        score = beam.score
+  word = candidate[:word]
+  bonus = candidate[:bonus]
 
-        if beam.sentence.empty?
-          puts "First word: #{candidate}"
-        else
+  score = beam.score
 
-          previous = beam.sentence.last
+  unless beam.sentence.empty?
 
-          bigram_score =
-            SinhalaTransliterator::Bigram.score(
-              previous,
-              candidate
-            )
+    previous = beam.sentence.last
 
-          puts
-          puts "#{previous} -> #{candidate}"
-          puts "Bigram Score = #{bigram_score}"
+    score += SinhalaTransliterator::Bigram.score(
+      previous,
+      word
+    )
 
-          score += bigram_score
+  end
+
+  # Weighted Beam Search
+  score += bonus
+
+  new_beams << Beam.new(
+    beam.sentence + [word],
+    score
+  )
+
+end
 
         end
 
-        new_beams << Beam.new(
-          beam.sentence + [candidate],
-          score
-        )
+        # Keep highest scoring beams
+        beams = new_beams.sort_by { |b| -b.score }
+        beams = beams.first(@beam_width)
 
       end
 
+      beams.first
+
     end
-
-    puts
-    puts "========== AFTER THIS STEP =========="
-
-    new_beams.each do |b|
-      puts "#{b.sentence.join(' ')}   Score=#{b.score}"
-    end
-
-    beams = new_beams.sort_by { |b| -b.score }
-
-    beams = beams.first(@beam_width)
-
-  end
-
-  puts
-  puts "========== FINAL =========="
-  beams.each do |b|
-    puts "#{b.sentence.join(' ')}   #{b.score}"
-  end
-
-  beams.first.sentence
-
-end
 
   end
 
